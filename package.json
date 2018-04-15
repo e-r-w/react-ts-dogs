@@ -27,8 +27,12 @@
     "develop": "gatsby develop",
     "build": "gatsby build",
     "test": "jest ./src",
-    "lint": "tslint --project .",
-    "pre-commit": "yarn lint && yarn test"
+    "lint": "tslint --project ."
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn lint && yarn test"
+    }
   },
   "dependencies": {
     "@types/ramda": "^0.25.21",
