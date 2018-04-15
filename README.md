@@ -1,4 +1,4 @@
-# react-ts-dogs
+# react-ts-dogs [![Build Status](https://travis-ci.org/e-r-w/react-ts-dogs.svg?branch=master)](https://travis-ci.org/e-r-w/react-ts-dogs)
 
 A simple application to fetch 8 pictures/videos of dogs. Built with React, Typescript, Redux & Gatsbyjs
 
