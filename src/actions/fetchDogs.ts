@@ -42,25 +42,26 @@ const parseType = (url: string): string => {
   return Unknown
 }
 
-export const fetchDog = (index: number) => async (dispatch: Dispatch<AnyAction>) => {
+export const fetchDog = (index: number) => (dispatch: Dispatch<AnyAction>): Promise<any> => {
   dispatch(fetchingDog(index))
 
-  const response = await fetch('https://random.dog/woof.json')
-  const { url } = await response.json()
+  return fetch('https://random.dog/woof.json')
+    .then(response => response.json())
+    .then(({ url }) => {
+      const type = parseType(url)
 
-  const type = parseType(url)
-
-  if (type === Unknown) {
-    await dispatch(fetchDog(index))
-  } else {
-    dispatch(foundDog(index, url, type))
-  }
+      if (type === Unknown) {
+        return dispatch(fetchDog(index))
+      } else {
+        dispatch(foundDog(index, url, type))
+      }
+    })
 }
 
-export default () => async (dispatch: Dispatch<AnyAction>) => {
-  await Promise.all(
-    range(0, 8).map(async (index: number) => {
-      await dispatch(fetchDog(index))
+export default () => (dispatch: Dispatch<AnyAction>) => {
+  return Promise.all(
+    range(0, 8).map((index: number) => {
+      return dispatch(fetchDog(index))
     })
   )
 }

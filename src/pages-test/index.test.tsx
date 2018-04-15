@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { shallow } from 'enzyme'
-import { Page } from './index'
+import { Page } from '../pages'
 import Image from '../components/Image'
 
 const noop = () => {} // tslint:disable-line
