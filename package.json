@@ -13,7 +13,6 @@
     "enzyme-adapter-react-15": "^1.0.5",
     "gatsby": "^1.9.248",
     "gatsby-plugin-typescript": "^1.4.19",
-    "husky": "^0.14.3",
     "jest": "^22.4.3",
     "nock": "^9.2.5",
     "node-fetch": "^2.1.2",
@@ -27,7 +26,8 @@
     "develop": "gatsby develop",
     "build": "gatsby build",
     "test": "jest ./src",
-    "lint": "tslint --project ."
+    "lint": "tslint --project .",
+    "precommit": "npm run-script lint && npm run-script test"
   },
   "dependencies": {
     "@types/ramda": "^0.25.21",
