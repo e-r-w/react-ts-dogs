@@ -1,5 +1,6 @@
 import * as React from 'react'
 import { Picture, Video, Webbum } from '../constants/imageType'
+import { Image } from 'semantic-ui-react'
 
 interface Props {
   type: string,
@@ -12,18 +13,19 @@ export default ({
 }: Props) => {
   if (type === Picture) {
     return (
-      <img
+      <Image
         src={url}
-        width='320'
-        height='240'
+        verticalAlign='middle'
+        centered
+        fluid
         />
     )
   }
   if ([Video, Webbum].indexOf(type) > -1) {
     return (
       <video
-        width='320'
-        height='240'
+        width='100%'
+        height='auto'
         controls
         >
         <source

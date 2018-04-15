@@ -5,6 +5,14 @@ import { StateTree } from '../state/createStore'
 import { Dog } from '../state/dogs'
 import fetchDogs from '../actions/fetchDogs'
 import Image from '../components/Image'
+import {
+  Button,
+  Grid,
+  GridColumn,
+  Container,
+  Header,
+  Segment
+} from 'semantic-ui-react'
 
 interface PageDog extends Dog {
   index: number
@@ -28,24 +36,30 @@ export class Page extends React.PureComponent<PageProps> {
   render () {
     const { dogs, fetchDogs }: PageProps = this.props
     return (
-      <div>
-        {dogs.map(({ url, loading, index, type }: PageDog) =>
-          <div key={index} style={{ display: 'inline-block' }}>
-            {loading &&
-              <div className='test-loading-placeholder'>
-                is loading
-              </div>
-            }
-            {!loading &&
-              <Image
-                url={url}
-                type={type}
-                />
-            }
-          </div>
-        )}
-        <button onClick={fetchDogs}> get more dogs </button>
-      </div>
+      <Container className='mt30'>
+        <Header as='h2' icon textAlign='center'>
+          <Header.Content>
+            Dogs
+          </Header.Content>
+          <Header.Subheader>
+            <div className='mb10'>Click the button to load more dogs!</div>
+            <Button primary onClick={fetchDogs}>Get more dogs</Button>
+          </Header.Subheader>
+        </Header>
+
+        <Grid stackable columns={4}>
+          {dogs.map(({ url, loading, index, type }: PageDog) =>
+            <GridColumn key={index}>
+              <Segment loading={loading} compact padded={false}>
+                <Image
+                  url={url}
+                  type={type}
+                  />
+              </Segment>
+            </GridColumn>
+          )}
+        </Grid>
+      </Container>
     )
   }
 }

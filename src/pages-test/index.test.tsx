@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { shallow } from 'enzyme'
 import { Page } from '../pages'
-import Image from '../components/Image'
+import { Segment } from 'semantic-ui-react'
 
 const noop = () => {} // tslint:disable-line
 
@@ -19,9 +19,10 @@ describe('Page', () => {
         />
     )
 
-    const placeholder = rendered.find('.test-loading-placeholder')
+    const segment = rendered.find(Segment)
 
-    expect(placeholder.exists()).toBeTruthy()
+    expect(segment.exists()).toBeTruthy()
+    expect(segment.prop('loading')).toBeTruthy()
   })
 
   it('should show an image once loaded', () => {
@@ -37,12 +38,9 @@ describe('Page', () => {
       />
     )
 
-    const placeholder = rendered.find('.test-loading-placeholder')
+    const segment = rendered.find(Segment)
 
-    expect(placeholder.exists()).toBeFalsy()
-
-    const imageComponent = rendered.find(Image)
-
-    expect(imageComponent.exists()).toBeTruthy()
+    expect(segment.exists()).toBeTruthy()
+    expect(segment.prop('loading')).toBeFalsy()
   })
 })

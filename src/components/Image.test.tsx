@@ -2,6 +2,7 @@ import * as React from 'react'
 import { shallow } from 'enzyme'
 import Image from './Image'
 import { Picture, Video, Webbum } from '../constants/imageType'
+import { Image as SemanticImage } from 'semantic-ui-react'
 
 describe('Image', () => {
   it('should render a video for mp4', () => {
@@ -50,7 +51,7 @@ describe('Image', () => {
         />
     )
 
-    const img = rendered.find('img')
+    const img = rendered.find(SemanticImage)
 
     expect(
       img.exists()
