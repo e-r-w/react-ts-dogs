@@ -27,8 +27,7 @@
     "develop": "gatsby develop",
     "build": "gatsby build",
     "test": "jest ./src",
-    "lint": "tslint --project .",
-    "precommit": "yarn lint && yarn test"
+    "lint": "tslint --project ."
   },
   "dependencies": {
     "@types/ramda": "^0.25.21",
