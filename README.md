@@ -22,3 +22,5 @@ First, install required dependencies with `yarn install`. You can get started de
 The Uglifyjs used under the hood with the Gatsby build doesn't seem to like Typescript's implementation of `async/await`. It wasn't used to extensively so I decided to revert back to vanilla promises - not worth the time spent chasing down the problem.
 
 Gatsby also produces a page for every `.tsx/.jsx` file in pages, so you can't put the test suite beside the original file without hooking into the Gatsby build pipeline to ignore test files - again, not worth the time spent chasing down the problem.
+
+The Gatsby cli doesn't seem to search for `.ts` files when looking for configuration, so Gatsby config has been written in ES syntax (although it still seems to run it through the TS pipeline with requires?).
